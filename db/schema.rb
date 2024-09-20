@@ -10,9 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_09_16_151107) do
+ActiveRecord::Schema[7.1].define(version: 2024_09_20_134957) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "decks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "country"
+    t.text "capital"
+    t.integer "inhabitants_of_the_capital"
+    t.integer "gross_domestic_product"
+    t.integer "forest_area"
+    t.integer "land_area"
+    t.integer "road_network"
+    t.float "annual_temperature"
+    t.float "precipitation"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "population_density"
+    t.index ["user_id"], name: "index_decks_on_user_id"
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "deck_id", null: false
+    t.string "status"
+    t.integer "points"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deck_id"], name: "index_games_on_deck_id"
+    t.index ["user_id"], name: "index_games_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +54,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_16_151107) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "decks", "users"
+  add_foreign_key "games", "decks"
+  add_foreign_key "games", "users"
 end
