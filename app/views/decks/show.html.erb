@@ -1,0 +1,16 @@
+<h1>Deck Details</h1>
+
+<div class="deck-details">
+  <p><strong>Land:</strong> <%= @deck.country %></p>
+  <p><strong>Hauptstadt:</strong> <%= @deck.capital %></p>
+  <p><strong>Einwohner der Hauptstadt:</strong> <%= @deck.inhabitants_of_the_capital %></p>
+  <p><strong>Bruttoinlandsprodukt:</strong> <%= number_to_currency(@deck.gross_domestic_product, unit: "€") %></p>
+  <p><strong>Waldfläche:</strong> <%= @deck.forest_area %> km²</p>
+  <p><strong>Landfläche:</strong> <%= @deck.land_area %> km²</p>
+  <p><strong>Straßennetz:</strong> <%= @deck.road_network %> km</p>
+  <p><strong>Durchschnittliche Jahrestemperatur:</strong> <%= @deck.annual_temperature %> °C</p>
+  <p><strong>Niederschlag:</strong> <%= @deck.precipitation %> mm</p>
+  <p><strong>Bevölkerungsdichte:</strong> <%= @deck.population_density %> Personen/km²</p>
+</div>
+
+<%= link_to 'Zurück zur Übersicht', decks_path, class: 'btn btn-primary' %>

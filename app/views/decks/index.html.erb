@@ -1,0 +1,9 @@
+<h1>Liste der Länder</h1>
+
+<ul>
+  <% @decks.each do |deck| %>
+    <li>
+      <%= link_to deck.country, deck_path(deck) %>
+    </li>
+  <% end %>
+</ul>
