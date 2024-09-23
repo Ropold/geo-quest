@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" />
+   <a class="navbar-brand" href="<%= root_path %>">
+      <img src="https://cdn.pixabay.com/photo/2012/05/07/18/53/card-game-48983_960_720.png" />
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -10,15 +10,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
+          <li class="nav-item">
+            <strong><%= link_to "Info of Decks", decks_path, class: "nav-link" %></strong>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Messages</a>
+          <strong><%= link_to "New Game vs KI", new_vs_ai_games_path, class: "nav-link" %></strong>
           </li>
-
+          <li class="nav-item">
+          <strong><%= link_to "New Game vs Player", new_game_path, class: "nav-link" %></strong>
+          </li>
           <li class="nav-item dropdown">
-            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://cdn.pixabay.com/photo/2016/08/28/13/12/secondlife-1625903_960_720.jpg" />
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="#">Action</a>
               <a class="dropdown-item" href="#">Another action</a>
@@ -28,7 +30,7 @@
         <% else %>
           <li class="nav-item">
             <%= form_with url: user_session_path, local: true, class: 'form-inline' do |form| %>
-            <%= form.submit 'Login', class: 'btn btn-outline-success my-2 my-sm-0' %>
+              <%= form.submit 'Login', class: 'btn btn-danger my-2 my-sm-0' %>
             <% end %>
           </li>
         <% end %>

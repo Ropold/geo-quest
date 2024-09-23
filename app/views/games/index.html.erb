@@ -1,0 +1,24 @@
+<h1>Deine Spiele</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Spiel ID</th>
+      <th>Status</th>
+      <th>Punkte</th>
+      <th>Aktion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @games.each do |game| %>
+      <tr>
+        <td><%= game.id %></td>
+        <td><%= game.status %></td>
+        <td><%= game.points %></td>
+        <td><%= link_to 'Ansehen', game_path(game) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Neues Spiel erstellen', new_game_path %>

@@ -1,0 +1,12 @@
+<h1>Neues Spiel gegen die KI</h1>
+
+<%= form_with model: @game, url: create_vs_ai_games_path do |f| %>
+  <div class="form-group">
+    <%= f.label :deck_id, "Wähle ein Deck für das Spiel" %>
+    <%= f.collection_select :deck_id, current_user.decks, :id, :country, prompt: "Bitte wähle ein Deck" %>
+  </div>
+
+  <%= f.submit "Spiel gegen die KI starten", class: "btn btn-primary" %>
+<% end %>
+
+<%= link_to 'Zurück zur Spielübersicht', games_path, class: 'btn btn-secondary' %>
