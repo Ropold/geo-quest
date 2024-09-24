@@ -1,9 +1,21 @@
 <h1>Liste der Länder</h1>
 
-<ul>
-  <% @decks.each do |deck| %>
-    <li>
-      <%= link_to deck.country, deck_path(deck) %>
-    </li>
+<div class="container-fluid">
+  <%= form_with method: :get, local: true, class: "d-flex bk-none", role: "search" do %>
+    <%= text_field_tag :query, params[:query], class: "form-control me-3", placeholder: "Type Country", aria: { label: "Search" } %>
+    <%= submit_tag "Search", class: "btn btn-outline-danger" %>
   <% end %>
-</ul>
+</div>
+
+<% if @decks.empty? %>
+  <p>Keine Ergebnisse gefunden.</p>
+<% else %>
+  <ul>
+    <% @decks.each do |deck| %>
+      <li>
+        <%= link_to deck.country, deck_path(deck) %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+<%= link_to 'Zurück zur Startseite', root_path, class: 'btn btn-secondary' %>

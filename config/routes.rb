@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   end
 
   resources :decks
-
   # Additional static pages
   get 'about', to: 'pages#about'
   get 'contact', to: 'pages#contact'

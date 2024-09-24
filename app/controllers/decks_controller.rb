@@ -2,12 +2,15 @@ class DecksController < ApplicationController
   before_action :set_deck, only: [:show]
 
   def index
-    # Zeigt alle Decks an, die über die API in die Datenbank eingefügt wurden
-    @decks = Deck.all
+    if params[:query].present?
+      # Verwende ein SQL-LIKE-Muster, um die Länderliste nach der Suchanfrage zu filtern
+      @decks = Deck.where("country LIKE ?", "%#{params[:query]}%")
+    else
+      # Zeige alle Decks an, wenn keine Suchanfrage vorliegt
+      @decks = Deck.all
+    end
   end
-
   def show
-    # Zeigt Details eines einzelnen Decks an, inklusive der Karten im Deck
     @decks = Deck.find(params[:id])
   end
 
@@ -20,5 +23,5 @@ class DecksController < ApplicationController
   def deck_params
     params.require(:deck).permit(:name, :description)
   end
-  
+
 end
