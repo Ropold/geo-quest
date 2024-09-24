@@ -18,10 +18,8 @@ user1 = User.create!(email: "john@wick.com", password: "1234567898")
 user2 = User.create!(email: "john@wayne.com", password: "1234567898")
 
 puts "Creating decks..."
-# Zuerst das Deck ohne game_id erstellen
 deck1 = Deck.create!(user: user1, country: "Germany", capital: "Berlin", inhabitants_of_the_capital: 300000, gross_domestic_product: 300, forest_area: 100, land_area: 357, road_network: 650, annual_temperature: 10.5, precipitation: 600, population_density: 230)
+deck2 = Deck.create!(user: user2, country: "France", capital: "Paris", inhabitants_of_the_capital: 200000, gross_domestic_product: 200, forest_area: 200, land_area: 357, road_network: 650, annual_temperature: 10.5, precipitation: 600, population_density: 230)
 
 puts "Creating games..."
-# Jetzt das Spiel erstellen, das dieses Deck referenziert
-game1 = Game.create!(user: user1, deck: deck1, status: "won", points: 100)
-
+game1 = Game.create!(user: user1, deck: deck1, status: "ongoing", points: 100)
