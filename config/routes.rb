@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   resources :games do
     collection do
       get 'new_vs_ai', to: 'games#new_vs_ai'
+      get 'new_vs_p', to: 'games#new_vs_p' # Route für Spiel gegen andere Spieler
       post 'create_vs_ai', to: 'games#create_vs_ai'
+      post 'create_vs_p', to: 'games#create_vs_p' # Route für die Erstellung eines Spiels gegen einen Spieler
     end
   end
 
@@ -16,7 +18,4 @@ Rails.application.routes.draw do
   # Additional static pages
   get 'about', to: 'pages#about'
   get 'contact', to: 'pages#contact'
-
-  # Defines the root path route ("/")
-  # root "posts#index"
 end

@@ -1,0 +1,13 @@
+
+<h1> Spiel gegen einen anderen Spieler</h1>
+
+<%= form_with model: @game, url: create_vs_p_games_path do |f| %>
+  <div class="form-group mt-3">
+    <%= f.label :opponent_email, "Wähle einen Gegner" %>
+    <%= f.collection_select :opponent_email, @opponents, :email, :email, prompt: "Bitte wähle einen Gegner", class: "form-control" %>
+  </div>
+
+  <%= f.submit "Spiel starten", class: "btn btn-danger mt-3" %>
+<% end %>
+
+<%= link_to 'Zurück zur Spielübersicht', root_path, class: 'btn btn-secondary' %>

@@ -8,14 +8,19 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 #
-User.destroy_all
-Deck.destroy_all
 Game.destroy_all
+Deck.destroy_all
+User.destroy_all
 
 puts "Creating users..."
 
-user1 = User.create!(email: "john@wick.com", password: "1234567898")
-user2 = User.create!(email: "john@wayne.com", password: "1234567898")
+user1 = User.create!(email: "john@ai.com", password: "1234567898")
+user2 = User.create!(email: "john@wick.com", password: "1234567898")
+user3 = User.create!(email: "john@wayne.com", password: "1234567898")
+user4 = User.create!(email: "john@lost.com", password: "1234567898")
+user5 = User.create!(email: "john@montana.com", password: "1234567898")
+user6 = User.create!(email: "john@brain.com", password: "1234567898")
+
 
 puts "Creating decks..."
 deck1 = Deck.create!(user: user1, country: "Germany", capital: "Berlin", inhabitants_of_the_capital: 300000, gross_domestic_product: 300, forest_area: 100, land_area: 357, road_network: 650, annual_temperature: 10.5, precipitation: 600, population_density: 230)
