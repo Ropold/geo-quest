@@ -4,21 +4,3 @@
 
 <h2>Aktuelle Runde</h2>
 
-<% if @game.player_cards.any? %>
-  <h3>Deine Karte:</h3>
-  <p>Land: <%= @game.player_cards.find_by(user_id: current_user.id).deck.country %></p>
-  <p>Bevölkerungsdichte: <%= @game.player_cards.find_by(user_id: current_user.id).deck.population_density %></p>
-
-  <h3>Gegnerkarte:</h3>
-  <!-- Das kannst du entweder verbergen oder zeigen, je nach Spielmechanik -->
-  <p>Land: ???</p>
-  <p>Bevölkerungsdichte: ???</p>
-
-  <%= button_to 'Runde spielen', play_round_game_path(@game), method: :post %>
-<% else %>
-  <p>Keine Karten mehr. Das Spiel ist vorbei!</p>
-<% end %>
-
-<%= button_to 'Runde spielen', play_round_game_path(@game), method: :post %>
-
-<%= link_to 'Zurück zur Spieleliste', games_path %>
