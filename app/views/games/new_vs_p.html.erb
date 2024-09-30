@@ -3,11 +3,30 @@
 
 <%= form_with model: @game, url: create_vs_p_games_path do |f| %>
   <div class="form-group mt-3">
-    <%= f.label :opponent_email, "Wähle einen Gegner" %>
-    <%= f.collection_select :opponent_email, @opponents, :email, :email, prompt: "Bitte wähle einen Gegner", class: "form-control" %>
+    <%= f.label :opponent_id, "Wähle einen Gegner" %>
+    <%= f.collection_select :opponent_id, @opponents, :id, :email, prompt: "Bitte wähle einen Gegner", class: "form-control" %>
   </div>
 
   <%= f.submit "Spiel starten", class: "btn btn-danger mt-3" %>
 <% end %>
 
 <%= link_to 'Zurück zur Spielübersicht', root_path, class: 'btn btn-secondary' %>
+
+<%= form_with model: @game, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :opponent_id, "Wähle einen Gegner" %>
+    <%= f.collection_select :opponent_id, @opponents, :id, :email, prompt: "Bitte wähle einen Gegner", class: "form-control" %>
+  </div>
+
+  <%= f.submit "Spiel starten", class: "btn btn-primary" %>
+<% end %>
+
+<%= form_with model: @game, url: create_vs_p_games_path do |f| %>
+  <div class="form-group">
+    <%= f.label :opponent_id, "Wähle einen Gegner" %>
+    <%= f.collection_select :opponent_id, @opponents, :id, :email, prompt: "Bitte wähle einen Gegner", class: "form-control" %>
+  </div>
+
+  <%= f.submit "Spiel gegen Spieler starten", class: "btn btn-primary" %>
+<% end %>
+

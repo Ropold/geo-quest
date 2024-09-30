@@ -1,3 +1,8 @@
 <h1>Neues Spiel gegen John@KI </h1>
 
+<%= form_with model: @game, url: create_vs_ai_games_path do |f| %>
+  <%= f.submit "Spiel gegen die John starten", class: "btn btn-primary" %>
+<% end %>
+
 <%= link_to 'Zurück zur Spielübersicht', root_path, class: 'btn btn-secondary mt-3' %>
+
